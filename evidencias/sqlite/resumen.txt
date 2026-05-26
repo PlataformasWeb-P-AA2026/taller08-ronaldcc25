@@ -1,0 +1,4 @@
+base_de_datos=sqlite:///paises.db
+total_jugadores=1000
+total_continentes=6
+total_paises=15
