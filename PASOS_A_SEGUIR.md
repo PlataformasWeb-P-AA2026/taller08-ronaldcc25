@@ -1,5 +1,8 @@
 # Pasos a seguir
 
+Driver Para PostgreSQL, el driver más común es psycopg2-binary.
+Driver Para MySQL / MariaDB, el driver más usado es pymysql
+
 ## 1. Crear el entorno virtual
 
 ```sh
@@ -35,6 +38,46 @@ pip install -r requirements.txt
 
 ```sh
 sqlite3 paises.db ".databases"
-```
+
+python3 creacion-tablas.py
+
+python3 importacion_datos.py
 
 streamlit run app.py
+```
+
+
+PARA MARIADB
+
+```sh
+sudo apt update && sudo apt install mariadb-server -y
+
+sudo mysql
+
+CREATE DATABASE paises;
+ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';
+FLUSH PRIVILEGES;
+EXIT;
+
+# driver de python3
+pip install pymysql
+
+# nueva cadena de conexión
+cadena_base_datos = "mysql+pymysql://root:1234@localhost:3306/paises"
+```
+
+PARA POSTGRESQL
+```sh
+sudo apt install postgresql postgresql-contrib -y
+
+sudo -u postgres psql
+
+CREATE DATABASE paises;
+ALTER USER postgres WITH PASSWORD '1234';
+\q
+
+# driver de python3
+pip install psycopg2-binary
+
+# nueva cadena de conexión
+cadena_base_datos = "postgresql+psycopg2://postgres:1234@localhost:5432/paises"
